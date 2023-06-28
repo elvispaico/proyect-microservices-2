@@ -1,0 +1,167 @@
+openapi: 3.0.3
+info:
+  title: Bootcamp Api Bank- OpenAPI 3.0
+  description: |-
+    Api Spring boot para adminstracion de entidad bancaria
+
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: epaicaca@nttdata.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+  - url: https://localhost:8081/api/bank
+tags:
+  - name: customer
+    description: Administracion de clientes
+
+paths:
+  /customers:
+
+    post:
+      tags:
+        - customer
+      summary: Guardar Cliente
+      description: Guarda un cliente personal o empresarial
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerSaveRequest'
+            example:
+              name: "Pedro Merino"
+              numDocument: "23232323"
+              codTypeCustomer: "01"
+              desTypeCustomer: "Personal"
+
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+              example:
+                code: 200
+                message: Customer save success
+
+    put:
+      tags:
+        - customer
+      summary: Actualizar Cliente
+      description: Actualiza el nombre y el documento de un cliente
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerUpdateRequest'
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+              example:
+                code: 200
+                message: Customer save success
+
+    get:
+      tags:
+        - customer
+      summary: Obtener todos los clientes
+      description: Devuelve una lista de clientes
+      operationId: findAllCustomer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+
+  /customers/{id}:
+    get:
+      tags:
+        - customer
+      summary: Busca Cliente por Id
+      description: Busca un cliente por su Id
+      parameters:
+        - name: id
+          in: path
+          description: Id de Cliente
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+
+components:
+  schemas:
+    Customer:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        numDocument:
+          type: string
+        codTypeCustomer:
+          type: string
+        desTypeCustomer:
+          type: string
+
+    CustomerSaveRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        numDocument:
+          type: string
+        codTypeCustomer:
+          type: string
+          enum:
+            - "01"
+            - "02"
+        desTypeCustomer:
+          type: string
+
+    CustomerUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        numDocument:
+          type: string
+
+    CustomerResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        numDocument:
+          type: string
+        codTypeCustomer:
+          type: string
+        desTypeCustomer:
+          type: string
+
+    MessageResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string

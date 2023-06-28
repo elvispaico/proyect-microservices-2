@@ -1,0 +1,10 @@
+server:
+  port: 8081
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://elvis:romulo22@cluster0.wkhua.mongodb.net/bootcamp-bank2
+      database: bootcamp-bank2
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
