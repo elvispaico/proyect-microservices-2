@@ -40,7 +40,7 @@ public class ProductServiceImpl implements ProductService {
                     if (isCustomerPersonal(customer.getCodTypeCustomer())) {
                         return saveProductCustomerPersonal(customer, request);
                     } else {
-                        return saveProductCustomerBussines(request);
+                        return saveProductCustomerBussines(request, customer);
                     }
                 });
     }
@@ -113,9 +113,24 @@ public class ProductServiceImpl implements ProductService {
         return response;
     }
 
-    private Single<Product> saveProductCustomerBussines(Product request) {
-        if (isVerifyCustomerBussinessAccountSuccess(request) && isVerifyCommissionSuccess(request)) {
-            return Single.fromPublisher(productRepository.save(request));
+    private Single<Product> saveProductCustomerBussines(Product request, CustomerResponse customer) {
+        if ((isVerifyCustomerBussinessAccountSuccess(request) && isVerifyCommissionSuccess(request))
+                || BussinessLogic.isCustomerEmpresarialPyme(customer.getCodTypeCustomer(), customer.getProfile().getCodPerfil())) {
+            if (BussinessLogic.isCustomerEmpresarialPyme(customer.getCodTypeCustomer(), customer.getProfile().getCodPerfil())
+                    && BussinessLogic.isServiceAccountSaving(request.getCodTypeService())) {
+                return productRepository.existsProductCard(customer.getId())
+                        .flatMap(existProduct -> {
+                            if (!existProduct) {
+                                return Single.error(new AttributeException("Card no exist"));
+                            } else {
+                                return productRepository.existsProductAccountCurrent(customer.getId())
+                                        .flatMap(existProduct2 -> !existProduct2 ? Single.error(new AttributeException("Account current no exist"))
+                                                : Single.fromPublisher(productRepository.save(request)));
+                            }
+                        });
+            } else {
+                return Single.fromPublisher(productRepository.save(request));
+            }
         } else {
             return Single.error(new AttributeException("Operacion no disponible"));
         }

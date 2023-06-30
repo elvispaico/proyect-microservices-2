@@ -24,4 +24,7 @@ public interface ProductRepository extends ReactiveCrudRepository<Product, Strin
 
     @ExistsQuery("{ 'idCustomer': ?0  ,'codTypeService': '06' }")
     Single<Boolean> existsProductCard(String idCustomer);
+
+    @ExistsQuery("{ 'idCustomer': ?0  ,'codTypeService': '02' }")
+    Single<Boolean> existsProductAccountCurrent(String idCustomer);
 }

@@ -3,8 +3,8 @@ server:
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://elvis:romulo22@cluster0.wkhua.mongodb.net/bootcamp-bank2
-      database: bootcamp-bank2
+      uri: mongodb://localhost:27017/dbclients
+      database: dbclients
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
