@@ -1,0 +1,166 @@
+openapi: 3.0.3
+info:
+  title: Bootcamp Api Bank- OpenAPI 3.0
+  description: Api Spring boot para adminstracion de entidad bancaria
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: epaicaca@nttdata.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+  - url: https://localhost:8081/api/bank
+tags:
+  - name: product
+    description: Administracion de clientes
+paths:
+  /products:
+    post:
+      tags:
+        - product
+      summary: Guardar producto
+      description: Guarda productos(cuentatas bancarias,creditos, tarjeta de credito)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+            example:
+              idCustomer: 649eddb4ead61c16f071cb1f
+              codTypeProduct: '01'
+              desTypeProduct: Pasivo
+              codTypeService: '01'
+              desTypeService: Cuenta de Ahorro
+              balance: 500
+              commission: 0
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+  /products/{id}:
+    get:
+      tags:
+        - product
+      summary: Buscar producto por Id
+      description: Busca un producto por su Id
+      parameters:
+        - name: id
+          in: path
+          description: Id Producto
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+  /products/customer/{idCustomer}:
+    get:
+      tags:
+        - product
+      summary: Buscar todos los productos de un cliente
+      description: Buscar todos los productos de un cliente
+      parameters:
+        - name: idCustomer
+          in: path
+          description: Id Cliente
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+  /products/{idProduct}/commissions:
+    get:
+      tags:
+        - product
+      summary: Buscar todos los productos con comision
+      description: Buscar todos los productos con comision
+      parameters:
+        - name: idProduct
+          in: path
+          description: Id Producto
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportProductResponse'
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+        idCustomer:
+          type: string
+        codTypeProduct:
+          type: string
+        desTypeProduct:
+          type: string
+        codTypeService:
+          type: string
+        desTypeService:
+          type: string
+        balance:
+          type: number
+    ReportProductResponse:
+      type: object
+      properties:
+        idProduct:
+          type: string
+        balance:
+          type: number
+          format: double
+        totalCommission:
+          type: number
+          format: double
+        listTransactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionResponse'
+    TransactionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        idProduct:
+          type: string
+        feTransaction:
+          type: string
+          format: date
+        codTypeTransaction:
+          type: string
+        desTypeTransaction:
+          type: string
+        amount:
+          type: number
+          format: double
+        commission:
+          type: number
+          format: double
+    MessageResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string

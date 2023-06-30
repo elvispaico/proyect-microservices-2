@@ -20,6 +20,7 @@ import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.Single;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
 
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -34,6 +35,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Single<Product> save(Product request) {
+var mono =         Mono.just(new CustomerResponse()).block();
         return Maybe.fromPublisher(customerApi.findCustomerById(request.getIdCustomer()))
                 .switchIfEmpty(Single.error(new ResourceNotFoundException("Customer not found")))
                 .flatMap(customer -> {

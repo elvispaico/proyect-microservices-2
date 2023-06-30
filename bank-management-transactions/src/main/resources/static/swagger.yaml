@@ -1,0 +1,116 @@
+openapi: 3.0.3
+info:
+  title: Bootcamp Api Bank- OpenAPI 3.0
+  description: Api Spring boot para adminstracion de entidad bancaria
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: epaicaca@nttdata.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+  - url: https://localhost:8081/api/bank
+tags:
+  - name: transaction
+    description: Administracion de clientes
+paths:
+  /transactions:
+    post:
+      tags:
+        - transaction
+      summary: Guardar Transaccion
+      description: Guarda transaccion(retiros, depositos,transferencias)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Transaction'
+              
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+                
+  /transactions/product/{idProduct}:
+    get:
+      tags:
+        - transaction
+      summary: Busca todas las transacciones de un producto por ID
+      description: Busca todas las transacciones de un producto por ID
+      parameters:
+        - name: idProduct
+          in: path
+          description: ID del producto
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Transaction'
+                  
+  /transactions/product/{idProduct}/commissions:
+    get:
+      tags:
+        - transaction
+      summary: Busca todas las transacciones con comision de un producto
+      description: Busca todas las transacciones que poseen comision de un producto
+      parameters:
+        - name: idProduct
+          in: path
+          description: ID del producto
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CommissionResponse'
+ 
+components:
+  schemas:
+    Transaction:
+      type: object
+      properties:
+        id:
+          type: string
+        idProduct:
+          type: string
+        feTransaction:
+          type: string
+          format: date
+        codTypeTransaction:
+          type: string
+        desTypeTransaction:
+          type: string
+        amount:
+          type: number
+          format: double
+        commission:
+          type: number
+          format: double
+          
+    CommissionResponse:
+      type: object
+      properties:
+        idTransacction:
+          type: string
+        commission:
+          type: number
+          format: double
+    

@@ -35,6 +35,9 @@ paths:
               numDocument: "23232323"
               codTypeCustomer: "01"
               desTypeCustomer: "Personal"
+              perfil:
+                codigo: "01"
+                noPerfil: "Normal"
 
       responses:
         '200':
@@ -103,7 +106,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomerResponse'
+                $ref: '#/components/schemas/Customer'
 
 components:
   schemas:
@@ -120,6 +123,8 @@ components:
           type: string
         desTypeCustomer:
           type: string
+        profile:
+          $ref: '#/components/schemas/ProfileCustomer'
 
     CustomerSaveRequest:
       type: object
@@ -135,6 +140,8 @@ components:
             - "02"
         desTypeCustomer:
           type: string
+        profile:
+          $ref: '#/components/schemas/ProfileCustomer'
 
     CustomerUpdateRequest:
       type: object
@@ -156,6 +163,13 @@ components:
         codTypeCustomer:
           type: string
         desTypeCustomer:
+          type: string
+    ProfileCustomer:
+      type: object
+      properties:
+        codPerfil:
+          type: string
+        desPerfil:
           type: string
 
     MessageResponse:
