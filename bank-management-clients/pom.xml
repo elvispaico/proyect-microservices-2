@@ -19,7 +19,7 @@
         <sonar.host.url>http://localhost:9000</sonar.host.url>
         <sonar.login>admin</sonar.login>
         <sonar.password>123456</sonar.password>
-<!--        <sonar.exclusions>**/com/bank/util/**</sonar.exclusions>-->
+        <!--        <sonar.exclusions>**/com/bank/util/**</sonar.exclusions>-->
         <sonar.coverage.exclusions>**/com/bank/util/**</sonar.coverage.exclusions>
 
         <!-- JaCoCo Properties -->
@@ -79,6 +79,13 @@
             <version>1.0.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-checkstyle-plugin</artifactId>
+            <version>3.3.0</version>
+            <type>maven-plugin</type>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -122,26 +129,34 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--  <plugin>
-                  <groupId>org.apache.maven.plugins</groupId>
-                  <artifactId>maven-checkstyle-plugin</artifactId>
-                  <version>3.1.2</version>
-                  <executions>
-                      <execution>
-                          <phase>validate</phase>
-                          <configuration>
-                              <configLocation>checkstyle.xml</configLocation>
-                              <encoding>UTF-8</encoding>
-                              <consoleOutput>true</consoleOutput>
-                              <failsOnError>true</failsOnError>
-                          </configuration>
-                          <goals>
-                              <goal>check</goal>
-                          </goals>
-                      </execution>
-                  </executions>
-              </plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.7</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
         </plugins>
     </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.3.0</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>checkstyle</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
 
 </project>
