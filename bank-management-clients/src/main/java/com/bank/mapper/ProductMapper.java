@@ -1,4 +1,4 @@
-package com.bank.service.mapper;
+package com.bank.mapper;
 
 import com.bank.model.bean.ProductDto;
 import com.bank.model.entity.Product;

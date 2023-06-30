@@ -1,4 +1,4 @@
-package com.bank.model;
+package com.bank.model.response;
 
 import com.bank.lib.model.bean.ProfileCustomer;
 import lombok.*;

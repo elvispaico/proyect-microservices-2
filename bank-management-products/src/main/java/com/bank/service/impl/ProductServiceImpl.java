@@ -1,15 +1,15 @@
 package com.bank.service.impl;
 
+import com.bank.api.CustomerApi;
 import com.bank.enums.TypeCustomer;
 import com.bank.enums.TypeService;
 import com.bank.exception.AttributeException;
 import com.bank.exception.ResourceNotFoundException;
-import com.bank.model.entity.Customer;
 import com.bank.model.entity.Product;
 import com.bank.model.entity.Transaction;
+import com.bank.model.response.CustomerResponse;
 import com.bank.model.response.ReportProductResponse;
 import com.bank.model.response.TransactionResponse;
-import com.bank.repository.CustomerRepository;
 import com.bank.repository.ProductRepository;
 import com.bank.repository.TransactionRepository;
 import com.bank.service.ProductService;
@@ -29,12 +29,12 @@ import java.util.stream.Collectors;
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
-    private final CustomerRepository customerRepository;
     private final TransactionRepository transactionRepository;
+    private final CustomerApi customerApi;
 
     @Override
     public Single<Product> save(Product request) {
-        var response = Maybe.fromPublisher(customerRepository.findById(request.getIdCustomer()))
+        return Maybe.fromPublisher(customerApi.findCustomerById(request.getIdCustomer()))
                 .switchIfEmpty(Single.error(new ResourceNotFoundException("Customer not found")))
                 .flatMap(customer -> {
                     if (isCustomerPersonal(customer.getCodTypeCustomer())) {
@@ -43,8 +43,6 @@ public class ProductServiceImpl implements ProductService {
                         return saveProductCustomerBussines(request);
                     }
                 });
-
-        return response;
     }
 
     @Override
@@ -94,7 +92,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Maybe<Product> saveAccountPersonalVip(Product product) {
 
-        var response = Maybe.fromPublisher(customerRepository.findById(product.getId()))
+        var response = Maybe.fromPublisher(customerApi.findCustomerById(product.getIdCustomer()))
                 .switchIfEmpty(Maybe.error(new ResourceNotFoundException("Product not fount")))
                 .flatMap(customer -> {
                     if (!BussinessLogic.isCustomerPersonalVip(customer.getCodTypeCustomer(), customer.getProfile().getCodPerfil())) {
@@ -123,7 +121,7 @@ public class ProductServiceImpl implements ProductService {
         }
     }
 
-    private Single<Product> saveProductCustomerPersonal(Customer customer, Product request) {
+    private Single<Product> saveProductCustomerPersonal(CustomerResponse customer, Product request) {
         return Observable.fromPublisher(productRepository.findByCustomer(request.getIdCustomer()))
                 .filter(product -> product.getCodTypeService().equals(request.getCodTypeService()))
                 .isEmpty()

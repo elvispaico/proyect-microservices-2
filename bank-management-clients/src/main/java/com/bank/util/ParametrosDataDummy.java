@@ -16,6 +16,10 @@ public class ParametrosDataDummy {
            new ParameterDetail("02","Empresarial")
         ));
         data.put("02", List.of(
+                new ParameterDetail("01","Perfil Normal"),
+                new ParameterDetail("02","Perfil Vip")
+        ));
+        data.put("03", List.of(
                 new ParameterDetail("01", "Cuenta Ahorro"),
                 new ParameterDetail("02", "Cuenta Corriente"),
                 new ParameterDetail("03", "Cuenta Plazo Fijo"),
