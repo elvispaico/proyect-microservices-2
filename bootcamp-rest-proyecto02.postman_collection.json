@@ -1,0 +1,745 @@
+{
+	"info": {
+		"_postman_id": "5dde52a9-8b66-419c-8c04-752458ed8972",
+		"name": "bootcamp-rest-proyecto02",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11485262"
+	},
+	"item": [
+		{
+			"name": "cliente",
+			"item": [
+				{
+					"name": "obtener todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/bank/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"bank",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "guardar cliente personal vip",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Victor Zapata\",\r\n    \"numDocument\": \"45454548\",   \r\n    \"codTypeCustomer\": \"01\",\r\n    \"profile\" : {\r\n        \"codPerfil\" : \"02\",\r\n        \"desPerfil\" : \"Vip\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/bank/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"bank",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "guardar clientee empresarial Pyme",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Victor Zapata\",\r\n    \"numDocument\": \"45454548\",   \r\n    \"codTypeCustomer\": \"01\",\r\n    \"profile\" : {\r\n        \"codPerfil\" : \"02\",\r\n        \"desPerfil\" : \"Vip\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/bank/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"bank",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "guardar clientee empresarial",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Victor Zapata\",\r\n    \"numDocument\": \"45454548\",   \r\n    \"codTypeCustomer\": \"01\",\r\n    \"profile\" : {\r\n        \"codPerfil\" : \"02\",\r\n        \"desPerfil\" : \"Vip\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/bank/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"bank",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar cliente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Emanuel Santoss\",\r\n    \"numDocument\" : \"34343434\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/bank/customers/6494c331f5ef5d24a6b697d6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"bank",
+								"customers",
+								"6494c331f5ef5d24a6b697d6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar cliente por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/bank/customers/649ddac240def541ff1e2e49",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"bank",
+								"customers",
+								"649ddac240def541ff1e2e49"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar cliente por id incluido productos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/bank/customers/649359dbeb0b4973a80e8a89/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"bank",
+								"customers",
+								"649359dbeb0b4973a80e8a89",
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "producto",
+			"item": [
+				{
+					"name": "registrar cuenta de ahorro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idCustomer\": \"649ddac240def541ff1e2e49x\",\r\n    \"codTypeProduct\": \"01\",\r\n    \"desTypeProduct\": \"Pasivo\",\r\n    \"codTypeService\": \"01\",\r\n    \"desTypeService\" : \"Cuenta Ahorro\",\r\n    \"balance\": \"500.00\",\r\n    \"commission\": \"0.00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/bank/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"bank",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "registrar cuenta corriente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idCustomer\": \"649ad9128650c453d6b949a0\",\r\n    \"codTypeProduct\": \"01\",\r\n    \"desTypeProducto\": \"Pasivo\",\r\n    \"codTypeService\": \"02\",\r\n    \"desTypeService\" : \"Cuenta Corriente\",\r\n    \"balance\": 400.00,\r\n    \"commission\": 10.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/bank/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"bank",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "registrar cuenta plazo fijo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idCustomer\": \"649508b71d435777ce00fc77\",\r\n    \"codTypeProduct\": \"01\",\r\n    \"desTypeProducto\": \"Pasivo\",\r\n    \"codTypeService\": \"03\",\r\n    \"desTypeService\" : \"Cuenta Plazo fijo\",\r\n    \"balance\": \"100.00\",\r\n    \"commission\": \"0.00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/bank/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"bank",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "registrar tarjeta de credito",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idCustomer\": \"649c520227e2414f812945e9\",\r\n    \"codTypeProduct\": \"02\",\r\n    \"desTypeProduct\": \"Activo\",\r\n    \"codTypeService\": \"06\",\r\n    \"desTypeService\": \"Tarjeta de credito\",\r\n    \"balance\": \"110.00\",\r\n    \"commission\": \"0.00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/bank/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"bank",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "registrar cuenta corriente empresarial",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idCustomer\": \"649360a7ede1ad1c508a31f5\",\r\n    \"codTypeProduct\": \"01\",\r\n    \"desTypeProducto\": \"Pasivo\",\r\n    \"codTypeService\": \"02\",\r\n    \"desTypeService\" : \"Cuenta Corriente\",\r\n    \"balance\": 220.00,\r\n    \"commission\": 20.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/bank/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"bank",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "registrar cuenta plazo fijo empresarial- error",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idCustomer\": \"649360a7ede1ad1c508a31f5\",\r\n    \"codTypeProduct\": \"01\",\r\n    \"desTypeProducto\": \"Pasivo\",\r\n    \"codTypeService\": \"03\",\r\n    \"desTypeService\" : \"Cuenta Plazo Fijo\",\r\n    \"balance\": 220.00,\r\n    \"commission\": 0.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/bank/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"bank",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "registrar producto credito personal",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idCustomer\": \"6490b7b9fd3f2e15a43f7d6f\",\r\n    \"codTypeProduct\": \"02\",\r\n    \"desTypeProducto\": \"Activo\",\r\n    \"codTypeService\": \"05\",\r\n    \"desTypeService\" : \"Credito Personal\",\r\n    \"balance\": \"200.00\",\r\n    \"commission\": \"0.00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/bank/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"bank",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar poducto por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/bank/products/649ada08f926d70920a093b2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"bank",
+								"products",
+								"649ada08f926d70920a093b2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bucar todos los prodcutos de cliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/bank/products/customer/649c520227e2414f812945e9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"bank",
+								"products",
+								"customer",
+								"649c520227e2414f812945e9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtener todas las transacciones de un producto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/bank/products/649ada08f926d70920a093b2/commissions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"bank",
+								"products",
+								"649ada08f926d70920a093b2",
+								"commissions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "registro products cliente vip",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idCustomer\": \"649ddac240def541ff1e2e49\",\r\n    \"codTypeProduct\": \"01\",\r\n    \"desTypeProduct\": \"Pasivo\",\r\n    \"codTypeService\": \"01\",\r\n    \"desTypeService\" : \"Cuenta Ahorro\",\r\n    \"balance\": \"500.00\",\r\n    \"commission\": \"0.00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/bank/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"bank",
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "transaction",
+			"item": [
+				{
+					"name": "depositar a cuenta de ahorro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \r\n   \"idProduct\" : \"649ada08f926d70920a093b2\",\r\n    \"feTransaction\":\"2023-06-21\",\r\n    \"codTypeTransaction\": \"01\",\r\n    \"desTypeTransaction\": \"ingreso\",\r\n    \"amount\" : 30.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/api/bank/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"bank",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retirar a cuenta de ahorro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \r\n   \"idProduct\" : \"649ada08f926d70920a093b2\",\r\n    \"feTransaction\":\"2023-06-21\",\r\n    \"codTypeTransaction\": \"02\",\r\n    \"desTypeTransaction\": \"retiro\",\r\n    \"amount\" : 160.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/api/bank/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"bank",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "depositar a cuenta corriente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \r\n   \"idProduct\" : \"649c2c697b1b261b53af2220\",\r\n    \"feTransaction\":\"2023-06-21\",\r\n    \"codTypeTransaction\": \"01\",\r\n    \"desTypeTransaction\": \"ingreso\",\r\n    \"amount\" : 50.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/api/bank/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"bank",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "depositar a cuenta plazo fijo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \r\n   \"idProduct\" : \"64950cf3de6c7a4dddea2161\",\r\n    \"feTransaction\":\"2023-06-22\",\r\n    \"codTypeTransaction\": \"02\",\r\n    \"desTypeTransaction\": \"retiro\",\r\n    \"amount\" : 20.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/bank/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"bank",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtener transacciones por producto",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \r\n   \"idProduct\" : \"6492ffa529a6df49a24628b7\",\r\n    \"feTransaction\":\"2023-06-21\",\r\n    \"codTypeTransaction\": \"01\",\r\n    \"desTypeTransaction\": \"ingreso\",\r\n    \"amount\" : 20.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/api/bank/transactions/product/649c2c697b1b261b53af2220",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"bank",
+								"transactions",
+								"product",
+								"649c2c697b1b261b53af2220"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtener transacciones con comision por producto",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \r\n   \"idProduct\" : \"6492ffa529a6df49a24628b7\",\r\n    \"feTransaction\":\"2023-06-21\",\r\n    \"codTypeTransaction\": \"01\",\r\n    \"desTypeTransaction\": \"ingreso\",\r\n    \"amount\" : 20.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/api/bank/transactions/product/649c2c697b1b261b53af2220/commissions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"bank",
+								"transactions",
+								"product",
+								"649c2c697b1b261b53af2220",
+								"commissions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "registrar transferencia",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\" : 30.00,\r\n    \"date\" : \"2023-06-27\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/api/bank/transfers/account-source/649b41ca07e2c77efcaa0d63/account-destination/649ada08f926d70920a093b2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"bank",
+								"transfers",
+								"account-source",
+								"649b41ca07e2c77efcaa0d63",
+								"account-destination",
+								"649ada08f926d70920a093b2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
