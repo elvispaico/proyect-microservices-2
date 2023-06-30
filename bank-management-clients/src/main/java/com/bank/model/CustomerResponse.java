@@ -1,6 +1,6 @@
 package com.bank.model;
 
-import com.bank.lib.model.bean.ProfileCustomer;
+import com.bank.model.bean.ProfileCustomer;
 import lombok.*;
 
 @Getter
